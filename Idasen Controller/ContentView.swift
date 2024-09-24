@@ -8,12 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var deskState: DeskControllerState
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Spacer()
+            
+            Text("Connected to desk: \(deskState.name ?? "")")
+                .font(.headline)
+            Text("Position: \(deskState.position ?? 0.0)cm")
+                .font(.subheadline)
+            
+            Spacer()
+            UpDownButton {
+                deskState.deskController?.moveUp()
+            } downAction: {
+                deskState.deskController?.moveDown()
+            }
+            Spacer()
+            
         }
         .padding()
     }
