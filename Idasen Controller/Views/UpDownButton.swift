@@ -20,11 +20,11 @@ private struct Btn: View {
         Button(action: self.action) {
             ZStack {
                 Rectangle()
-                    .fill(.gray)
+                    .fill(.accent)
                 Image(systemName: systemName)
             }
         }
-        .foregroundStyle(.black)
+        .foregroundStyle(.foreground)
         .frame(width: 100, height: 100)
         .buttonRepeatBehavior(.enabled)
     }

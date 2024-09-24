@@ -8,30 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var deskState: DeskControllerState
     
     var body: some View {
-        VStack {
-            Spacer()
-            
-            Text("Connected to desk: \(deskState.name ?? "")")
-                .font(.headline)
-            Text("Position: \(deskState.position ?? 0.0)cm")
-                .font(.subheadline)
-            
-            Spacer()
-            UpDownButton {
-                deskState.deskController?.moveUp()
-            } downAction: {
-                deskState.deskController?.moveDown()
-            }
-            Spacer()
-            
+        TabView {
+            RemoteScreen()
+                .tabItem {
+                    Label("Remote", systemImage: "av.remote")
+                }
+            PreferencesScreen()
+                .tabItem {
+                    Label("Preferences", systemImage: "gear")
+                }
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(DeskControllerState())
 }
