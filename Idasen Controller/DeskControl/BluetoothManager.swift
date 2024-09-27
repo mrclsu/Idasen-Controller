@@ -83,12 +83,27 @@ extension BluetoothManager: CBCentralManagerDelegate {
             return
         }
        
+        
+//        let GENERIC_ACCESS =  CBUUID(string: "00001801-0000-1000-8000-00805F9B34FB")
+//        let GENERIC_ATTRIBUTE = CBUUID(string: "0000180A-0000-1000-8000-00805F9B34FB")
+//        let DEVICE_INFORMATION = CBUUID(string: "99FA0001-338A-1024-8A49-009C0215F78A")
+//        let CONTROL =  CBUUID(string: "99FA0010-338A-1024-8A49-009C0215F78A")
+//        let CONFIGURATION = CBUUID(string: "99FA0020-338A-1024-8A49-009C0215F78A")
+//        let REFERENCE_OUTPUT = CBUUID(string: "99FA0030-338A-1024-8A49-009C0215F78A")
+//        let REFERENCE_INPUT = CBUUID(string: "99FA0050-338A-1024-8A49-009C0215F78A")
+//        let TIMER = CBUUID(string: "FFFF0010-338A-1024-8A49-009C0215F78A")
+//        let WIFI_SCAN = CBUUID(string: "FFFF0020-338A-1024-8A49-009C0215F78A")
+//        let WIFI_CONNECT = CBUUID(string: "FFFF0030-338A-1024-8A49-009C0215F78A")
+//        let FIRMWARE = CBUUID(string: "FFFF0100-338A-1024-8A49-009C0215F78A")
+//
+//        let services = [GENERIC_ACCESS, GENERIC_ATTRIBUTE, DEVICE_INFORMATION, CONTROL, CONFIGURATION, REFERENCE_OUTPUT, REFERENCE_INPUT, TIMER, WIFI_SCAN, WIFI_CONNECT, FIRMWARE]
+
         // Start scanning for all peripherals
         central.scanForPeripherals(withServices: nil, options: nil)
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-         print("Discovered peripheral: \(peripheral) • \(advertisementData) • \(RSSI)")
+//         print("Discovered peripheral: \(peripheral) • \(advertisementData) • \(RSSI)")
         
         // Make sure it's not already connected & meets our matching criteria
         guard connectedPeripheral != peripheral, matchCriteria(peripheral) else {
