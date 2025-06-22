@@ -20,7 +20,7 @@ struct DeskVisualizerView: View {
     @State private var initialLegMiddleY: Float = 0.0
     @State private var initialLegTopY: Float = 0.0
     
-    @Binding var deskHeightRatio: Float
+    let deskHeightRatio: Float
     
     
     var body: some View {
@@ -96,5 +96,5 @@ struct DeskVisualizerView: View {
 }
 
 #Preview {
-    DeskVisualizerView(deskHeightRatio: .constant(0.5))
+    DeskVisualizerView(deskHeightRatio: 0.5)
 }

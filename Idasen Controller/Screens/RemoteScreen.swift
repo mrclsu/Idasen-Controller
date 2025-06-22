@@ -13,6 +13,8 @@ struct RemoteScreen: View {
     @State var presets: [Preset] = UserDefaults.loadArrayFromStandard(forKey: "presets", type: [Preset].self)
     
     var body: some View {
+        let ratio: Float = ((deskState.position?.rounded() ?? 61.5 ) - 61.5) / 65.5
+        
         NavigationView {
             VStack {
                 Spacer()
@@ -22,11 +24,16 @@ struct RemoteScreen: View {
                 Text("Position: \(Int(deskState.position?.rounded() ?? 0.0))cm")
                     .font(.subheadline)
                 
+                
                 Spacer()
-                UpDownButton {
-                    deskState.deskController?.moveUp()
-                } downAction: {
-                    deskState.deskController?.moveDown()
+                HStack {
+                    DeskVisualizerView(deskHeightRatio: ratio)
+                    Spacer()
+                    UpDownButton {
+                        deskState.deskController?.moveUp()
+                    } downAction: {
+                        deskState.deskController?.moveDown()
+                    }
                 }
                 Spacer()
                 

@@ -12,7 +12,7 @@ struct PreferencesScreen: View {
     var body: some View {
         NavigationView {
             VStack {
-                DeskVisualizerView(deskHeightRatio: $currentDeskHeightRatio)
+                DeskVisualizerView(deskHeightRatio: currentDeskHeightRatio)
                     
                 Slider(value: $currentDeskHeightRatio, in: 0.0...1.0) {
                     Text("Desk Height")
